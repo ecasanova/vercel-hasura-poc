@@ -13,7 +13,7 @@ const QUERY = gql`
   }
 `;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const {data} = await client.query({
     query: QUERY,
   });
@@ -21,8 +21,7 @@ export async function getStaticProps() {
   return {
     props: {
       users: data.users,
-    },
-    revalidate: 10,
+    }
   };
 }
 
